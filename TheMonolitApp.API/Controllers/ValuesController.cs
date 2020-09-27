@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -10,6 +11,7 @@ using TheMonolitApp.API.Data;
 namespace TheMonolitApp.API.Controllers
 {
     
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
@@ -25,6 +27,7 @@ namespace TheMonolitApp.API.Controllers
         }
         // GET api/values
         [HttpGet]
+        //[AllowAnonymous]
         public async Task< IActionResult> Get()
         {
             var values =  await _context.Values.ToListAsync();
