@@ -46,7 +46,7 @@ namespace TheMonolitApp.API.Controllers
             return StatusCode(201);
         }
 
-        [HttpPost("login")]
+        [HttpPost("login")] 
 
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
@@ -78,6 +78,7 @@ namespace TheMonolitApp.API.Controllers
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
+            //console.login(token);
             return Ok(new {
                 token = tokenHandler.WriteToken(token)
             });

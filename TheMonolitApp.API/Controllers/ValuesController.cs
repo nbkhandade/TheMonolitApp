@@ -27,17 +27,16 @@ namespace TheMonolitApp.API.Controllers
         }
         // GET api/values
         [HttpGet]
-        //[AllowAnonymous]
+        [AllowAnonymous]
         public async Task< IActionResult> Get()
         {
             var values =  await _context.Values.ToListAsync();
-            _logger.LogInformation("Test");
-            _logger.LogDebug("Debug Test");
             return Ok(values);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task< ActionResult> Get(int id)
         {
             var value = await _context.Values.FirstOrDefaultAsync(v => v.Id == id);
